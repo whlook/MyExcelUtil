@@ -32,7 +32,7 @@ using NPOI.Util.Collections;
 
 
 
-namespace NPOIExcel
+namespace ExcelTool
 {
     public class ExcelUtils
     {
