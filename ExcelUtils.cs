@@ -162,28 +162,15 @@ namespace ExcelTool
             return true;
         }
         /// <summary>
-        /// 判断字符串是否为数字，只适合简单的判断，不能用作所有情况下的判断
+        /// 判断字符串是否为数字
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         private static bool isNumber(string val)
         {
             string temp = val.Trim();
-
-            if (temp.Length == 0)
-                return false;
-
-            foreach (char t in temp)
-            {
-        
-                if (t != '-' && t != '+' && t!='.')
-                {
-                    if (t < '0' || t > '9')
-                        return false;
-                }
-            }
-
-            return true;
+            double i;
+            return double.TryParse(temp,out i);
         }
         /// <summary>
         /// 向单元格写入日期
