@@ -37,7 +37,7 @@ namespace ExcelTool
     public class ExcelUtils
     {
 
-        #region 将值写入单元格 
+        #region 将值写入单元格
         /// <summary>
         /// 在单元格中写入值,自动判断是否是数字
         /// </summary>
@@ -56,9 +56,9 @@ namespace ExcelTool
                 HSSFCell t_cell = (HSSFCell)t_row.CreateCell(col - 1);
                 if (isNumber(val))
                 {
-            
+
                     double valNum = double.Parse(val);
-                    
+
                     t_cell.SetCellValue(valNum);
                 }
                 else
@@ -74,7 +74,7 @@ namespace ExcelTool
 
                     if (isNumber(val))
                     {
-                    
+
                         double valNum = double.Parse(val);
                         t_cell.SetCellValue(valNum);
                     }
@@ -87,7 +87,7 @@ namespace ExcelTool
 
                     if (isNumber(val))
                     {
-                       
+
                         double valNum = double.Parse(val);
                         t_cell.SetCellValue(valNum);
                     }
@@ -252,7 +252,7 @@ namespace ExcelTool
 
             if(src.GetRow(src_row-1)==null)
             {
-                return false; 
+                return false;
             }
             else
             {
@@ -296,11 +296,11 @@ namespace ExcelTool
                             t_cell.SetCellValue(t);
                         }
                     }
-                    
+
                 }
             }
 
-            
+
             return true;
         }
         #endregion
@@ -337,7 +337,7 @@ namespace ExcelTool
         }
         #endregion
 
-        #region 合并单元格 
+        #region 合并单元格
         /// <summary>
         /// 合并单元格
         /// </summary>
@@ -398,7 +398,7 @@ namespace ExcelTool
 
             HSSFSheet sheet = (HSSFSheet)wb.GetSheetAt(0);
 
-     
+
             if (sheet.GetRow(row - 1) == null)
             {
                 HSSFRow t_row = (HSSFRow)sheet.CreateRow(row - 1);
@@ -565,7 +565,7 @@ namespace ExcelTool
             }
 
             // font.Boldweight = 700;  // 设置粗体
-            
+
             if (sheet.GetRow(row - 1) == null)
             {
                 HSSFRow t_row = (HSSFRow)sheet.CreateRow(row - 1);
@@ -610,7 +610,7 @@ namespace ExcelTool
         public enum CellFormat
         {
             Date,//日期格式
-            Point2,//小数点保留两位 
+            Point2,//小数点保留两位
         }
         /// <summary>
         /// 设置单元格的格式，如日期、小数
@@ -619,7 +619,7 @@ namespace ExcelTool
         /// <param name="col"></param>
         /// <param name="format"></param>
         /// <param name="wb"></param>
-        
+
         public static void SetCellFormat(int row, int col, CellFormat format, ref HSSFWorkbook wb)
         {
             HSSFCellStyle Style =(HSSFCellStyle)wb.CreateCellStyle();
@@ -640,10 +640,10 @@ namespace ExcelTool
                 {
                     case CellFormat.Date: Style.DataFormat = dataFormat.GetFormat("yyyy年m月d日");
                         break;
-                    case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00"); 
+                    case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00");
                         break;
                 }
-            
+
                 t_cell.CellStyle = Style;
             }
             else
@@ -660,7 +660,7 @@ namespace ExcelTool
                     {
                         case CellFormat.Date: Style.DataFormat = dataFormat.GetFormat("yyyy年m月d日");
                             break;
-                        case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00"); 
+                        case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00");
                             break;
                     }
 
@@ -676,14 +676,14 @@ namespace ExcelTool
                     {
                         case CellFormat.Date: Style.DataFormat = dataFormat.GetFormat("yyyy年m月d日");
                             break;
-                        case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00"); 
+                        case CellFormat.Point2: Style.DataFormat = dataFormat.GetFormat("0.00");
                             break;
                     }
 
                     t_cell.CellStyle = Style;
                 }
             }
- 
+
         }
         #endregion
 
@@ -902,7 +902,7 @@ namespace ExcelTool
         public static void SetCellBorderAll(int row, int col, NPOI.SS.UserModel.BorderStyle borderStyle, ref HSSFWorkbook wb)
         {
             HSSFCellStyle cellStyle = (HSSFCellStyle)wb.CreateCellStyle();
-     
+
             HSSFSheet sheet = (HSSFSheet)wb.GetSheetAt(0);
 
             if (sheet.GetRow(row - 1) == null)
@@ -910,7 +910,7 @@ namespace ExcelTool
                 HSSFRow t_row = (HSSFRow)sheet.CreateRow(row - 1);
 
                 HSSFCell t_cell = (HSSFCell)t_row.CreateCell(col - 1);
-             
+
                 cellStyle.CloneStyleFrom(t_cell.CellStyle);
                 cellStyle.BorderBottom = borderStyle;
                 cellStyle.BorderTop = borderStyle;
